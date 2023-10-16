@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b36f0cb3-f89e-4a75-9225-34c5099abc14" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/grammar/G.g4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/settings.gradle.kts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/parser/GBaseListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/parser/GBaseVisitor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/parser/GLexer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/parser/GListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/parser/GParser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/parser/GVisitor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/parser/MyVisitor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/parser/Parse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/piConcurrent/Edge.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/piConcurrent/Fun.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/piConcurrent/InIt.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/piConcurrent/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/piConcurrent/ReadXML.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/piConcurrent/StreamGobbler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/piConcurrent/WriteCode.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2WFxBrJVSYAnt5RoukYJnrDvuPF" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "WebServerToolWindowFactoryState": "false",
+    "jdk.selected.JAVA_MODULE": "adopt-11",
+    "last_opened_file_path": "C:/egyetem masolat/felev7/Szakdoga/piParserAndGenerator/antlr-4.13.1-complete.jar",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "advanced.settings"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\egyetem masolat\felev7\Szakdoga\piParserAndGenerator\lib" />
+      <recent name="C:\egyetem masolat\felev7\Szakdoga\piParserAndGenerator" />
+      <recent name="C:\egyetem masolat\felev7\Szakdoga\piParserAndGenerator\src\main" />
+      <recent name="C:\egyetem masolat\felev7\Szakdoga\piParserAndGenerator\src\main\java" />
+      <recent name="C:\egyetem masolat\felev7\Szakdoga\piParserAndGenerator\src" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\egyetem masolat\felev7\Szakdoga\piParserAndGenerator" />
+      <recent name="C:\egyetem masolat\felev7\Szakdoga\piParserAndGenerator\src\main\java\parser" />
+      <recent name="C:\egyetem masolat\felev7\Szakdoga\piParserAndGenerator\src" />
+      <recent name="C:\egyetem masolat\felev7\Szakdoga\piParserAndGenerator\src\main\java" />
+      <recent name="C:\egyetem masolat\felev7\Szakdoga\piParserAndGenerator\src\main" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="antlr" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="antlr" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="futtat" type="Application" factoryName="Application">
+      <option name="ALTERNATIVE_JRE_PATH" value="adopt-11" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="piConcurrent.Main" />
+      <module name="piParserAndGenerator.main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b36f0cb3-f89e-4a75-9225-34c5099abc14" name="Changes" comment="" />
+      <created>1696341999323</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1696341999323</updated>
+      <workItem from="1696342001622" duration="172000" />
+      <workItem from="1696850964511" duration="25000" />
+      <workItem from="1696851009335" duration="766000" />
+      <workItem from="1696867766717" duration="5763000" />
+      <workItem from="1696886575435" duration="9073000" />
+      <workItem from="1697452338460" duration="4290000" />
+      <workItem from="1697463452767" duration="4885000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

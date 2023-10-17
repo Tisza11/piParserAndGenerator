@@ -4,34 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b36f0cb3-f89e-4a75-9225-34c5099abc14" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/grammar/G.g4" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/settings.gradle.kts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/parser/GBaseListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/parser/GBaseVisitor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/parser/GLexer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/parser/GListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/parser/GParser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/parser/GVisitor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/parser/MyVisitor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/parser/Parse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/piConcurrent/Edge.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/piConcurrent/Fun.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/piConcurrent/InIt.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/piConcurrent/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/piConcurrent/ReadXML.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/piConcurrent/StreamGobbler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/piConcurrent/WriteCode.java" afterDir="false" />
+    <list default="true" id="b36f0cb3-f89e-4a75-9225-34c5099abc14" name="Changes" comment="antlr classokat nem talalja">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/piConcurrent/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/piConcurrent/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/piConcurrent/ReadXML.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/piConcurrent/ReadXML.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/piConcurrent/WriteCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/piConcurrent/WriteCode.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,8 +101,16 @@
       <workItem from="1696867766717" duration="5763000" />
       <workItem from="1696886575435" duration="9073000" />
       <workItem from="1697452338460" duration="4290000" />
-      <workItem from="1697463452767" duration="4885000" />
+      <workItem from="1697463452767" duration="12568000" />
     </task>
+    <task id="LOCAL-00001" summary="antlr classokat nem talalja">
+      <created>1697481940814</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1697481940814</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -140,5 +126,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="antlr classokat nem talalja" />
+    <option name="LAST_COMMIT_MESSAGE" value="antlr classokat nem talalja" />
   </component>
 </project>

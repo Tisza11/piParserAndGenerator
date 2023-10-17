@@ -34,7 +34,7 @@ public class Main {
     public static StringBuilder headerbe = new StringBuilder();
 
     //thread ID-k
-    static ArrayList<Integer> idk = new ArrayList<>();
+    static ArrayList<Integer> IDk = new ArrayList<>();
 
     //ebbe lesz kiirvava a C kód
     public static StringBuilder kod = new StringBuilder();
@@ -60,16 +60,23 @@ public class Main {
 
     public static void main(String[] args) throws ParserConfigurationException, IOException, SAXException {
         sourceFolder = "C:\\egyetem masolat\\felev6\\Onlab\\c-probak\\";
-        gmlFile = "witnessAzonos.graphml";
-        codeFile = "funok.i";
+        gmlFile = "witnessAzonos.graphml"; //"rwl2.graphml";
+        codeFile = "funok.i"; //"read_write_lock-2.i";
         targetFolder = "C:\\egyetem masolat\\felev6\\Onlab\\futasra\\";
-//        if(!ReadXML.Read_XML(gmlFile, codeFile)) return;
-//        InIt.Init();
-//        ReadCode(/*codeFolder, */codeFile);
+        if(!ReadXML.Read_XML(gmlFile, codeFile)) return;
+        System.out.println("Read xml done");
+        InIt.Init();
+        System.out.println("Init done");
+        ReadCode(/*codeFolder, */codeFile);
+        System.out.println("Read code done");
         ReadFuns();
-//        Checker();
-//        WriteCode.Write_Code();
-//        CompileCprog();
+        System.out.println("Read funs done");
+        Checker();
+        System.out.println("Checker done");
+        WriteCode.Write_Code();
+        System.out.println("Write code done");
+        CompileCprog();
+        System.out.println("Compile and run done");
     }
 
 
@@ -143,7 +150,11 @@ public class Main {
 //        }
         System.out.println(sourceFolder + codeFile);
         Parse.parse(sourceFolder + codeFile); // itt probalom ki az antlr mukodeset a projektben
-        System.out.println(funok);
+        for (int i = 0; i < funok.size(); i++) {
+            System.out.println(funok.get(i).name);
+            System.out.println(funok.get(i).startLine);
+            System.out.println(funok.get(i).endLine);
+        }
     }
 
     /**

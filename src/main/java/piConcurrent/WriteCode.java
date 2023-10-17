@@ -70,9 +70,9 @@ public class WriteCode {
                         "pthread_cond_t cond;\n" +
                         "int flag;\n");
         //thread ID-kat tárolják
-        for(int i = 0; i < Main.idk.size();i++){
+        for(int i = 0; i < Main.IDk.size(); i++){
             Main.kod.append("int t");
-            Main.kod.append(Main.idk.get(i));
+            Main.kod.append(Main.IDk.get(i));
             Main.kod.append(" = -1;\n");
         }
         return eleje;
@@ -121,14 +121,14 @@ public class WriteCode {
         for(int i = 0; i < Main.funok.size(); i++){
             if(Main.funok.get(i).name.equals("main")) idx = i;
         }
-        for (int i = 0; i < Main.idk.size(); i++) {
+        for (int i = 0; i < Main.IDk.size(); i++) {
             //a for ciklusnál optimálisabbnak tűnik, de nincs még kipróbálva
 //            while (k >= 0 && !(edges.get(k).Thread == idk.get(i))){
 //                k--;
 //            }
             for(int l = 0; l < Main.edges.size(); l++){
-                if(Main.edges.get(l).thread == Main.idk.get(i)){
-                    if(Main.idk.get(i) == 0){
+                if(Main.edges.get(l).thread == Main.IDk.get(i)){
+                    if(Main.IDk.get(i) == 0){
                         if(Main.edges.get(l).startLine > Main.funok.get(idx).startLine && Main.edges.get(l).startLine < Main.funok.get(idx).endLine)
                             k = l;
                     }

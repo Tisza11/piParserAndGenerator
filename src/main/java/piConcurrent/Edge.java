@@ -20,7 +20,7 @@ public class Edge {
     //Véget ér-e ezután már a fv, aminek ez az egyik (utolsó) sora
     public boolean isLast = false;
     //Szál azonosító
-    public int thread;
+    public int thread = -1;
     //létrehozott szál
     public int createdThread;
 

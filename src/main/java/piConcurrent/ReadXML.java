@@ -159,10 +159,11 @@ public class ReadXML {
         if(data.getAttribute("key").equals("threadId")) {
             newEdge.thread = Integer.parseInt(data.getTextContent());
             newEdge.toUse = true;
-            if(!Main.IDk.contains(Integer.parseInt(data.getTextContent()))) Main.IDk.add(Integer.parseInt(data.getTextContent()));
+//            if(!Main.IDk.contains(Integer.parseInt(data.getTextContent()))) Main.IDk.add(Integer.parseInt(data.getTextContent()));
         }
         if(data.getAttribute("key").equals("createThread")) {
             newEdge.createdThread = Integer.parseInt(data.getTextContent());
+            if(!Main.IDk.contains(Integer.parseInt(data.getTextContent()))) Main.IDk.add(Integer.parseInt(data.getTextContent()));
         }
     }
 

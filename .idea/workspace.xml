@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b36f0cb3-f89e-4a75-9225-34c5099abc14" name="Changes" comment="antlr classokat nem talalja">
+    <list default="true" id="b36f0cb3-f89e-4a75-9225-34c5099abc14" name="Changes" comment="antlr mukodik, csak forditani, futtatni wsl-en vagy linuxon kell">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/piConcurrent/Edge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/piConcurrent/Edge.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/piConcurrent/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/piConcurrent/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/piConcurrent/ReadXML.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/piConcurrent/ReadXML.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/piConcurrent/WriteCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/piConcurrent/WriteCode.java" afterDir="false" />
@@ -43,17 +43,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "WebServerToolWindowFactoryState": "false",
-    "jdk.selected.JAVA_MODULE": "adopt-11",
-    "last_opened_file_path": "C:/egyetem masolat/felev7/Szakdoga/piParserAndGenerator/antlr-4.13.1-complete.jar",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "advanced.settings"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;adopt-11&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/egyetem masolat/felev7/Szakdoga/piParserAndGenerator/antlr-4.13.1-complete.jar&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\egyetem masolat\felev7\Szakdoga\piParserAndGenerator\lib" />
@@ -101,7 +101,9 @@
       <workItem from="1696867766717" duration="5763000" />
       <workItem from="1696886575435" duration="9073000" />
       <workItem from="1697452338460" duration="4290000" />
-      <workItem from="1697463452767" duration="12568000" />
+      <workItem from="1697463452767" duration="19965000" />
+      <workItem from="1698017245843" duration="8597000" />
+      <workItem from="1698103260171" duration="22441000" />
     </task>
     <task id="LOCAL-00001" summary="antlr classokat nem talalja">
       <created>1697481940814</created>
@@ -110,7 +112,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697481940814</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="antlr mukodik, csak forditani, futtatni wsl-en vagy linuxon kell">
+      <created>1697534850614</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1697534850614</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -129,6 +138,32 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="antlr classokat nem talalja" />
-    <option name="LAST_COMMIT_MESSAGE" value="antlr classokat nem talalja" />
+    <MESSAGE value="antlr mukodik, csak forditani, futtatni wsl-en vagy linuxon kell" />
+    <option name="LAST_COMMIT_MESSAGE" value="antlr mukodik, csak forditani, futtatni wsl-en vagy linuxon kell" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/piConcurrent/WriteCode.java</url>
+          <line>15</line>
+          <properties class="piConcurrent.WriteCode" method="Write_Code">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/piConcurrent/WriteCode.java</url>
+          <line>30</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="GradleRunConfiguration">
+        <watch expression="Main.funok" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

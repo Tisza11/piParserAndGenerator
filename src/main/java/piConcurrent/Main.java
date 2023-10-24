@@ -60,8 +60,8 @@ public class Main {
 
     public static void main(String[] args) throws ParserConfigurationException, IOException, SAXException {
         sourceFolder = "C:\\egyetem masolat\\felev6\\Onlab\\c-probak\\";
-        gmlFile = "witnessAzonos.graphml"; //"rwl2.graphml";
-        codeFile = "funok.i"; //"read_write_lock-2.i";
+        gmlFile = "rwl_D.graphml"; //"witnessAzonos.graphml";
+        codeFile = "read_write_lock-2.i"; //"funok.i";
         targetFolder = "C:\\egyetem masolat\\felev6\\Onlab\\futasra\\";
         if(!ReadXML.Read_XML(gmlFile, codeFile)) return;
         System.out.println("Read xml done");
@@ -150,11 +150,11 @@ public class Main {
 //        }
         System.out.println(sourceFolder + codeFile);
         Parse.parse(sourceFolder + codeFile); // itt probalom ki az antlr mukodeset a projektben
-        for (int i = 0; i < funok.size(); i++) {
-            System.out.println(funok.get(i).name);
-            System.out.println(funok.get(i).startLine);
-            System.out.println(funok.get(i).endLine);
-        }
+//        for (int i = 0; i < funok.size(); i++) {
+//            System.out.println(funok.get(i).name);
+//            System.out.println(funok.get(i).startLine);
+//            System.out.println(funok.get(i).endLine);
+//        }
     }
 
     /**

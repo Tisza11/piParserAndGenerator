@@ -3,6 +3,9 @@ package piConcurrent;
 import org.xml.sax.SAXException;
 import parser.Parse;
 
+import com.beust.jcommander.JCommander;
+import com.beust.jcommander.Parameter;
+import com.beust.jcommander.ParameterException;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.*;
 import java.util.ArrayList;
@@ -60,9 +63,11 @@ public class Main {
 
     public static void main(String[] args) throws ParserConfigurationException, IOException, SAXException {
         sourceFolder = "C:\\egyetem masolat\\felev6\\Onlab\\c-probak\\";
-        gmlFile = "rwl_D.graphml"; //"witnessAzonos.graphml";
-        codeFile = "read_write_lock-2.i"; //"funok.i";
+//        sourceFolder = "/mnt/c/egyetem masolat/felev6/Onlab/c-probak/";
+        gmlFile = "l01_D.graphml";//"rwl_D.graphml"; //"witnessAzonos.graphml";
+        codeFile = "lazy01.i";//"read_write_lock-2.i"; //"funok.i";
         targetFolder = "C:\\egyetem masolat\\felev6\\Onlab\\futasra\\";
+//        targetFolder = "/mnt/c/egyetem masolat/felev6/Onlab/futasra/";
         if(!ReadXML.Read_XML(gmlFile, codeFile)) return;
         System.out.println("Read xml done");
         InIt.Init();
@@ -209,6 +214,7 @@ public class Main {
             throw new RuntimeException(e);
         }
         BufferedReader r = new BufferedReader(new InputStreamReader(p.getInputStream()));
+        String acc = "\noutput: ";
         String line;
         while (true) {
             try {
@@ -218,7 +224,9 @@ public class Main {
             }
             if (line == null) { break; }
             System.out.println(line);
+            acc = acc + line;
         }
+        if(acc.contains("main") && (acc.contains("failed") || acc.contains("Aborted")))System.out.println(acc);
     }
 
     /**

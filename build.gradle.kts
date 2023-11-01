@@ -1,5 +1,7 @@
 plugins {
     id("java")
+    id("com.github.johnrengelman.shadow") version "7.1.2"
+    id("application")
     antlr
 }
 
@@ -13,6 +15,7 @@ repositories {
 dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.1")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.1")
+    implementation("com.beust:jcommander:1.82")
     antlr("org.antlr:antlr4:4.13.1")
 }
 
@@ -23,4 +26,8 @@ tasks.generateGrammarSource {
 
 tasks.getByName<Test>("test") {
     useJUnitPlatform()
+}
+
+application {
+    mainClassName = "piConcurrent.Main"
 }

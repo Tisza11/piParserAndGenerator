@@ -19,6 +19,7 @@ public class WriteCode {
         /*int LastLineInMain = */FindLastLines();
         int eleje = TopOfCode();
         //sorok és hozzájuk tartozó részek összeállítása
+        System.out.println("\neleje: " + eleje);
         for(int i = eleje; i < Main.sorok.size(); i++){
             if(j == (i + 1) && j > 0)Main.kod.append("    pthread_mutex_unlock(&piConcurrent_mutex);    //generated\n");
             SetTheEndOfFunctions(i);
@@ -27,6 +28,26 @@ public class WriteCode {
             SetAfterCreate(i);
             SetTheChange(i);
             SetTheStartOfFunctions(i);
+
+//            System.out.println("\nHello");
+//            System.out.println(Main.sorok.size());
+            if(i == 605) System.out.println("\n Hello \n" + Main.sorok.get(i));
+            if(Main.sorok.get(i).contains("__VERIFIER_nondet_")){
+                int nondetEleje = Main.sorok.get(i).indexOf("__VERIFIER_nondet_");
+                int nondetVege = Main.sorok.get(i).indexOf("(", nondetEleje);
+                String nondetFvType = Main.sorok.get(i).substring(nondetEleje + ("__VERIFIER_nondet_").length(), nondetVege);
+                System.out.println(nondetFvType);
+                System.out.println("\n\n__VERIFIER_nondet_\n\n");
+                boolean tartalmazza = false;
+                String header = Main.headerbe.toString();
+                if(header.contains(nondetFvType)) tartalmazza = true ;
+                if(!tartalmazza){
+                    System.out.println("\nHiasan nem lett jelolve " + nondetFvType);
+                    String nondetFv = "__VERIFIER_nondet_" + nondetFvType;
+                    if(nondetFvType.startsWith("u")) nondetFvType = "unsigned " + nondetFvType.substring(1);
+                    Main.headerbe.append("\n" + nondetFvType + " " + nondetFv + "(){ return 0;}\n");
+                }
+            }
         }
         CleareFolder();
         WriteOut();

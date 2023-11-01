@@ -9,11 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b36f0cb3-f89e-4a75-9225-34c5099abc14" name="Changes" comment="mukodik nehany sv-compos peldara is">
+    <list default="true" id="b36f0cb3-f89e-4a75-9225-34c5099abc14" name="Changes" comment="mukodik nehany sv-compos peldara is, reszben mukodik a jar generalas">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/piConcurrent/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/piConcurrent/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/piConcurrent/WriteCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/piConcurrent/WriteCode.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,7 +112,7 @@
       <recent name="antlr" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.futtat">
+  <component name="RunManager" selected="Gradle.piParserAndGenerator [runShadow]">
     <configuration name="futtat" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="adopt-11" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -235,7 +233,7 @@
       <workItem from="1698017245843" duration="8597000" />
       <workItem from="1698103260171" duration="23334000" />
       <workItem from="1698662463191" duration="25882000" />
-      <workItem from="1698784977022" duration="4319000" />
+      <workItem from="1698784977022" duration="6840000" />
     </task>
     <task id="LOCAL-00001" summary="antlr classokat nem talalja">
       <created>1697481940814</created>
@@ -258,7 +256,14 @@
       <option name="project" value="LOCAL" />
       <updated>1698144076101</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="mukodik nehany sv-compos peldara is, reszben mukodik a jar generalas">
+      <created>1698850599152</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1698850599152</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -279,7 +284,8 @@
     <MESSAGE value="antlr classokat nem talalja" />
     <MESSAGE value="antlr mukodik, csak forditani, futtatni wsl-en vagy linuxon kell" />
     <MESSAGE value="mukodik nehany sv-compos peldara is" />
-    <option name="LAST_COMMIT_MESSAGE" value="mukodik nehany sv-compos peldara is" />
+    <MESSAGE value="mukodik nehany sv-compos peldara is, reszben mukodik a jar generalas" />
+    <option name="LAST_COMMIT_MESSAGE" value="mukodik nehany sv-compos peldara is, reszben mukodik a jar generalas" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

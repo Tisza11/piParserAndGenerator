@@ -18,6 +18,7 @@ import java.util.regex.Pattern;
 public class Main {
     //majd  @Parameter -nek ki kell szervezni, de amíg építem, addig marad így
     //C file neve
+    @Parameter(names = "--codeFile", required = true, description = "Ide add meg a .i file-t!")
     public static String codeFile;
 
     //élek adatainak eltárolása beolvasás után ebben
@@ -31,6 +32,7 @@ public class Main {
 
     //majd  @Parameter -nek ki kell szervezni, de amíg építem, addig marad így
     //witness file elérési útja
+    @Parameter(names = "--gmlFile", required = true, description = "Ide add meg a witness file nevet!")
     public static String gmlFile;
 
     //ez a részlet fog bekerülni a C kódba a main elé, hogy futtatható legyen (nondet fv megvalósítások)
@@ -49,6 +51,7 @@ public class Main {
     public static ArrayList<String> sorok = new ArrayList<>();
 
     //ebben a mappában van a .i és *.graphml file
+    @Parameter(names = "--sourceFolder", required = true, description = "Ide add meg a .i es .graphml fileokat tartalmazo mappa eleresi utjat!")
     public static String sourceFolder;
 
     //ebben vannak eltárolva azok az élek, amelyeken meg van adva threadID
@@ -59,15 +62,29 @@ public class Main {
 
     //majd  @Parameter -nek ki kell szervezni, de amíg építem, addig marad így
     //cél mappa elérési útja
-    public static String targetFolder = "futasra";
+    @Parameter(names = "--targetFolder", required = true, description = "Ide add meg a cel mappa eleresi utjat!")
+    public static String targetFolder;
+//    public static String targetFolder = "futasra";
+    public static void main(final String[] args) throws ParserConfigurationException, IOException, SAXException {
+        final Main mainApp = new Main();
+        mainApp.run(args);
+    }
 
-    public static void main(String[] args) throws ParserConfigurationException, IOException, SAXException {
-        sourceFolder = "C:\\egyetem masolat\\felev6\\Onlab\\c-probak\\";
-//        sourceFolder = "/mnt/c/egyetem masolat/felev6/Onlab/c-probak/";
-        gmlFile = "l01_D.graphml";//"rwl_D.graphml"; //"witnessAzonos.graphml";
-        codeFile = "lazy01.i";//"read_write_lock-2.i"; //"funok.i";
-        targetFolder = "C:\\egyetem masolat\\felev6\\Onlab\\futasra\\";
-//        targetFolder = "/mnt/c/egyetem masolat/felev6/Onlab/futasra/";
+    public void run(String[] args) throws ParserConfigurationException, IOException, SAXException {
+        try {
+            JCommander.newBuilder().addObject(this).programName("graphmlparser").build().parse(args);
+        } catch (final ParameterException ex) {
+            System.out.println("Invalid parameters, details:");
+            System.out.println(ex.getMessage());
+            ex.usage();
+            return;
+        }
+//        sourceFolder = "C:\\egyetem masolat\\felev6\\Onlab\\c-probak\\";
+////        sourceFolder = "/mnt/c/egyetem masolat/felev6/Onlab/c-probak/";
+//        gmlFile = "l01_D.graphml";//"rwl_D.graphml"; //"witnessAzonos.graphml";
+//        codeFile = "lazy01.i";//"read_write_lock-2.i"; //"funok.i";
+//        targetFolder = "C:\\egyetem masolat\\felev6\\Onlab\\futasra\\";
+////        targetFolder = "/mnt/c/egyetem masolat/felev6/Onlab/futasra/";
         if(!ReadXML.Read_XML(gmlFile, codeFile)) return;
         System.out.println("Read xml done");
         InIt.Init();
@@ -194,11 +211,11 @@ public class Main {
     public static void CompileCprog() throws IOException {
         ClearAndSetFolder();
         //linuxra
-//        ProcessBuilder builder = new ProcessBuilder(
-//                "sh", "-c", "cd " + targetFolder + " && gcc main.c -o main && ./main");
-        ProcessBuilder builder;
-        builder = new ProcessBuilder(
-                "cmd.exe", "/c", "cd " + targetFolder + " && gcc main.c -o main && main");
+        ProcessBuilder builder = new ProcessBuilder(
+                "sh", "-c", "cd " + targetFolder + " && gcc main.c -o main && ./main");
+//        ProcessBuilder builder;
+//        builder = new ProcessBuilder(
+//                "cmd.exe", "/c", "cd " + targetFolder + " && gcc main.c -o main && main");
 //        builder.directory(new File("/futasra/"));
         //windowsra
 //        Process compile = new ProcessBuilder(

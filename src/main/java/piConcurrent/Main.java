@@ -16,9 +16,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Main {
-    //majd  @Parameter -nek ki kell szervezni, de amíg építem, addig marad így
     //C file neve
-    @Parameter(names = "--codeFile", required = true, description = "Ide add meg a .i file-t!")
+//    @Parameter(names = "--codeFile", required = true, description = "Ide add meg a .i file-t!")
     public static String codeFile;
 
     //élek adatainak eltárolása beolvasás után ebben
@@ -30,9 +29,8 @@ public class Main {
     //fv-ek tárolása (név, kezdő sor, utolsó sor)
     public static ArrayList<Fun> funok = new ArrayList<>();
 
-    //majd  @Parameter -nek ki kell szervezni, de amíg építem, addig marad így
     //witness file elérési útja
-    @Parameter(names = "--gmlFile", required = true, description = "Ide add meg a witness file nevet!")
+//    @Parameter(names = "--gmlFile", required = true, description = "Ide add meg a witness file nevet!")
     public static String gmlFile;
 
     //ez a részlet fog bekerülni a C kódba a main elé, hogy futtatható legyen (nondet fv megvalósítások)
@@ -51,7 +49,7 @@ public class Main {
     public static ArrayList<String> sorok = new ArrayList<>();
 
     //ebben a mappában van a .i és *.graphml file
-    @Parameter(names = "--sourceFolder", required = true, description = "Ide add meg a .i es .graphml fileokat tartalmazo mappa eleresi utjat!")
+//    @Parameter(names = "--sourceFolder", required = true, description = "Ide add meg a .i es .graphml fileokat tartalmazo mappa eleresi utjat!")
     public static String sourceFolder;
 
     //ebben vannak eltárolva azok az élek, amelyeken meg van adva threadID
@@ -60,45 +58,51 @@ public class Main {
 //    //a jelenlegi szálat tárolja    //jelenleg nincs használva
 //    public static int CurrentThread = 0;
 
-    //majd  @Parameter -nek ki kell szervezni, de amíg építem, addig marad így
     //cél mappa elérési útja
-    @Parameter(names = "--targetFolder", required = true, description = "Ide add meg a cel mappa eleresi utjat!")
+//    @Parameter(names = "--targetFolder", required = true, description = "Ide add meg a cel mappa eleresi utjat!")
     public static String targetFolder;
 //    public static String targetFolder = "futasra";
-    public static void main(final String[] args) throws ParserConfigurationException, IOException, SAXException {
-        final Main mainApp = new Main();
-        mainApp.run(args);
-    }
+//    public static void main(final String[] args) throws ParserConfigurationException, IOException, SAXException {
+//        final Main mainApp = new Main();
+//        mainApp.run(args);
+//    }
+//
+//    public void run(String[] args) throws ParserConfigurationException, IOException, SAXException {
+//        try {
+//            JCommander.newBuilder().addObject(this).programName("graphmlparser").build().parse(args);
+//        } catch (final ParameterException ex) {
+//            System.out.println("Invalid parameters, details:");
+//            System.out.println(ex.getMessage());
+//            ex.usage();
+//            return;
+//        }
 
-    public void run(String[] args) throws ParserConfigurationException, IOException, SAXException {
-        try {
-            JCommander.newBuilder().addObject(this).programName("graphmlparser").build().parse(args);
-        } catch (final ParameterException ex) {
-            System.out.println("Invalid parameters, details:");
-            System.out.println(ex.getMessage());
-            ex.usage();
+
+        //sima futtataskor
+    public static void main(String[] args) throws ParserConfigurationException, IOException, SAXException {
+        sourceFolder = "C:\\egyetem masolat\\felev6\\Onlab\\c-probak\\";
+//        sourceFolder = "/mnt/c/egyetem masolat/felev6/Onlab/c-probak/";
+        gmlFile = "rwl_D.graphml"; //"witnessAzonos.graphml";
+        codeFile = "read_write_lock-2.i"; //"funok.i";
+        targetFolder = "C:\\egyetem masolat\\felev6\\Onlab\\futasra\\";
+//        targetFolder = "/mnt/c/egyetem masolat/felev6/Onlab/futasra/";
+        if(!ReadXML.Read_XML(gmlFile, codeFile)) return;
+//        System.out.println("Read xml done");
+        InIt.Init();
+//        System.out.println("Init done");
+        ReadCode(/*codeFolder, */codeFile);
+//        System.out.println("Read code done");
+        ReadFuns();
+//        System.out.println("Read funs done");
+        Checker();
+//        System.out.println("Checker done");
+        if(WriteCode.Write_Code() == -1){
+            System.out.println("vegtelen ciklus");
             return;
         }
-//        sourceFolder = "C:\\egyetem masolat\\felev6\\Onlab\\c-probak\\";
-////        sourceFolder = "/mnt/c/egyetem masolat/felev6/Onlab/c-probak/";
-//        gmlFile = "l01_D.graphml";//"rwl_D.graphml"; //"witnessAzonos.graphml";
-//        codeFile = "lazy01.i";//"read_write_lock-2.i"; //"funok.i";
-//        targetFolder = "C:\\egyetem masolat\\felev6\\Onlab\\futasra\\";
-////        targetFolder = "/mnt/c/egyetem masolat/felev6/Onlab/futasra/";
-        if(!ReadXML.Read_XML(gmlFile, codeFile)) return;
-        System.out.println("Read xml done");
-        InIt.Init();
-        System.out.println("Init done");
-        ReadCode(/*codeFolder, */codeFile);
-        System.out.println("Read code done");
-        ReadFuns();
-        System.out.println("Read funs done");
-        Checker();
-        System.out.println("Checker done");
-        WriteCode.Write_Code();
-        System.out.println("Write code done");
+//        System.out.println("Write code done");
         CompileCprog();
-        System.out.println("Compile and run done");
+//        System.out.println("Compile and run done");
     }
 
 
@@ -112,7 +116,6 @@ public class Main {
             Scanner myReader = new Scanner(myFile);
             while (myReader.hasNextLine()) {
                 String data = myReader.nextLine();
-                //akor kell, ha a saját windows-os gépemen akarom futtatni, library gondok miatt
                 sorok.add(data);
             }
             myReader.close();
@@ -120,63 +123,21 @@ public class Main {
             System.out.println("Hiba van a beolvasassal.");
             e.printStackTrace();
         }
-        /*int lastvmi = data.lastIndexOf('{');
-        int lastassertf = data.lastIndexOf("__assert_fail");
-        String seged1 = "";
-        if(lastvmi > -1 && lastassertf > -1){
-            seged1  = data.substring(lastvmi, lastassertf + ("__assert_fail").length());
-        }
-        if(data.contains(seged1) && lastvmi > -1 && lastassertf > -1){
-            String val = data.substring(0,lastvmi + 1) + "_assert" + data.substring(lastassertf + ("__assert_fail").length());
-            data = val;
-
-            int lastComa = data.lastIndexOf(',');
-            int lastBracket = data.lastIndexOf(')');
-            String val1 = data.substring(0,lastComa) + data.substring(lastBracket);
-            data = val1;
-            //System.out.println(data + "\n");
-        }*/
     }
 
     /**
      * Megkeresi a használt fv-ek neveit, első és utolsó sorait
      */
     public static void ReadFuns() {
-//        Pattern pattern;
-//        Matcher matcher;
-//        int i = 1833;
-//        int counter = 1;
-//        pattern = Pattern.compile(".*\\*.*\\(.*\\).*\\{.*");
-//        while (i < sorok.size()) {
-//            matcher = pattern.matcher(sorok.get(i));
-//            if (matcher.find() || sorok.get(i).contains("main")) {
-//                Fun fun = new Fun();
-//                if(sorok.get(i).contains("main")) fun.name = "main";
-//                else fun.name = sorok.get(i).substring(sorok.get(i).indexOf('*'), sorok.get(i).indexOf('('));
-//                if(fun.name.contains(" ")) fun.name = fun.name.trim();
-//                fun.startLine = i;
-//                while(counter > 0){
-//                    i++;
-//                    if(sorok.get(i).contains("{") || sorok.get(i).contains("}")){
-//                        for(int j = 0; j < sorok.get(i).length(); j++){
-//                            if(sorok.get(i).charAt(j) == '{') counter++;
-//                            if(sorok.get(i).charAt(j) == '}') counter--;
-//                        }
-//                    }
-//                }
-//                fun.endLine = i;
-//                funok.add(fun);
-//                counter = 1;
-//            }
-//            i++;
-//        }
-        System.out.println(sourceFolder + codeFile);
-        Parse.parse(sourceFolder + codeFile); // itt probalom ki az antlr mukodeset a projektben
-//        for (int i = 0; i < funok.size(); i++) {
-//            System.out.println(funok.get(i).name);
-//            System.out.println(funok.get(i).startLine);
-//            System.out.println(funok.get(i).endLine);
-//        }
+//        System.out.println(sourceFolder + codeFile);
+        Parse.parse(sourceFolder + codeFile);
+        //fv-ek neve, kezdo es zaro sora
+        for (int i = 0; i < funok.size(); i++) {
+            System.out.println(funok.get(i).name);
+            System.out.println(funok.get(i).startLine);
+            System.out.println(funok.get(i).startCurly);
+            System.out.println(funok.get(i).endLine);
+        }
     }
 
     /**
@@ -211,17 +172,12 @@ public class Main {
     public static void CompileCprog() throws IOException {
         ClearAndSetFolder();
         //linuxra
-        ProcessBuilder builder = new ProcessBuilder(
-                "sh", "-c", "cd " + targetFolder + " && gcc main.c -o main && ./main");
-//        ProcessBuilder builder;
-//        builder = new ProcessBuilder(
-//                "cmd.exe", "/c", "cd " + targetFolder + " && gcc main.c -o main && main");
-//        builder.directory(new File("/futasra/"));
-        //windowsra
-//        Process compile = new ProcessBuilder(
-//                "cmd", "/C", "gcc" + "\"" + targetFolder + "-o", targetFolder + "main.exe", targetFolder + "main.c").start();
 //        ProcessBuilder builder = new ProcessBuilder(
-//                "cd", targetFolder, "&&", "./main.exe");
+//                "sh", "-c", "cd " + targetFolder + " && gcc main.c -o main && ./main");
+        //windowsra
+        ProcessBuilder builder;
+        builder = new ProcessBuilder(
+                "cmd.exe", "/c", "cd " + targetFolder + " && gcc main.c -o main && main");
         builder.redirectErrorStream(true);
         Process p = null;
         try {
@@ -243,7 +199,11 @@ public class Main {
             System.out.println(line);
             acc = acc + line;
         }
-        if(acc.contains("main") && (acc.contains("failed") || acc.contains("Aborted")))System.out.println(acc);
+        if(acc.contains("main") && (acc.contains("failed") || acc.contains("Aborted"))){
+            System.out.println("failed, ok");
+        }else {
+            System.out.println("not failed, not ok");
+        }
     }
 
     /**

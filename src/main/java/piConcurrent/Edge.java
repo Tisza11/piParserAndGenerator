@@ -23,6 +23,8 @@ public class Edge {
     public int thread = -1;
     //létrehozott szál
     public int createdThread;
+    //utolsó sora-e egy szálnak
+    boolean isLastLine = false;
 
     /**
      * Paraméter nélüli konstruktor

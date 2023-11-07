@@ -13,44 +13,50 @@ public class WriteCode {
      * Ez alatt találhatóak a benne felhasznált fv-ek, amik azért lettek kirendezve, hogy átláthatóbb legyen az WriteCode()
      */
     static Fun mainFn;
-    public static void Write_Code(){
+    public static int Write_Code(){
+        /*int LastLineInMain = */FindLastLines();
         SearchThreadChanges();
         int j = SearchFirstJoin();
-        /*int LastLineInMain = */FindLastLines();
+//        /*int LastLineInMain = */FindLastLines();
         int eleje = TopOfCode();
+//        System.out.println("\neleje: " + eleje);
+        //ha pthread_create() fv-ben adott fv lett indítva a szálon,
+        //csak majd annak az elején lesz beszúrva a szálkezeléshez szükséges fv eleji blokk
+        for(int k = 0; k < Main.funok.size(); k++){
+            for(int i = eleje; i < Main.sorok.size(); i++){
+                if(Main.sorok.get(i).contains("pthread_create") && Main.sorok.get(i).contains(Main.funok.get(k).name)){
+                    Main.funok.get(k).startedOnThread = true;
+                }
+            }
+        }
         //sorok és hozzájuk tartozó részek összeállítása
-        System.out.println("\neleje: " + eleje);
         for(int i = eleje; i < Main.sorok.size(); i++){
-            if(j == (i + 1) && j > 0)Main.kod.append("    pthread_mutex_unlock(&piConcurrent_mutex);    //generated\n");
+//            if(j == (i + 1) && j > 0)Main.kod.append("    pthread_mutex_unlock(&piConcurrent_mutex);    //generated\n");
+            //join előtt felszabadíztani a mutexet
             SetTheEndOfFunctions(i);
+            if(Main.sorok.get(i).contains("pthread_join"))Main.kod.append(
+                    "    locked = 0;    //generated\n" +
+                    "    pthread_mutex_unlock(&piConcurrent_mutex);    //generated\n");
             Main.kod.append(Main.sorok.get(i));   /*<----------sor hozzáadás---------<<<<<*/
             Main.kod.append("\n");
+            if(Main.sorok.get(i).contains("pthread_join"))Main.kod.append(
+                    "    pthread_mutex_lock(&piConcurrent_mutex);    //generated\n" +
+                    "    locked = 1;    //generated\n");
             SetAfterCreate(i);
             SetTheChange(i);
             SetTheStartOfFunctions(i);
 
-//            System.out.println("\nHello");
-//            System.out.println(Main.sorok.size());
-            if(i == 605) System.out.println("\n Hello \n" + Main.sorok.get(i));
             if(Main.sorok.get(i).contains("__VERIFIER_nondet_")){
-                int nondetEleje = Main.sorok.get(i).indexOf("__VERIFIER_nondet_");
-                int nondetVege = Main.sorok.get(i).indexOf("(", nondetEleje);
-                String nondetFvType = Main.sorok.get(i).substring(nondetEleje + ("__VERIFIER_nondet_").length(), nondetVege);
-                System.out.println(nondetFvType);
-                System.out.println("\n\n__VERIFIER_nondet_\n\n");
-                boolean tartalmazza = false;
-                String header = Main.headerbe.toString();
-                if(header.contains(nondetFvType)) tartalmazza = true ;
-                if(!tartalmazza){
-                    System.out.println("\nHiasan nem lett jelolve " + nondetFvType);
-                    String nondetFv = "__VERIFIER_nondet_" + nondetFvType;
-                    if(nondetFvType.startsWith("u")) nondetFvType = "unsigned " + nondetFvType.substring(1);
-                    Main.headerbe.append("\n" + nondetFvType + " " + nondetFv + "(){ return 0;}\n");
-                }
+                HianyosNondetKezel(i);
+            }
+            if(Main.sorok.get(i).contains("while(1)") || Main.sorok.get(i).contains("while(true)")){
+                System.out.println("infinite loop");
+                return -1;
             }
         }
         CleareFolder();
         WriteOut();
+        return 0;
     }
 
     /**
@@ -69,6 +75,7 @@ public class WriteCode {
                 Main.szalelek.get(i).threadChanges = true;
                 System.out.println("\nchange thread from " + Main.szalelek.get(i).thread + " to " + Main.szalelek.get(i + 1).thread + "\n");
                 System.out.println("Line " + Main.szalelek.get(i).startLine);
+                System.out.println(Main.szalelek.get(i).isLastLine);
             }
         }
     }
@@ -90,12 +97,19 @@ public class WriteCode {
         for(int i = 0; i < lenyeg - 1; i++){
             Main.kod.append(Main.sorok.get(i));   /*<----------sor hozzáadás---------<<<<<*/
             Main.kod.append("\n");
+            if(Main.sorok.get(i).contains("__VERIFIER_nondet_")){
+                HianyosNondetKezel(i);
+            }
+//            if(Main.sorok.get(i).contains("while(1)") || Main.sorok.get(i).contains("while(true)")){
+//                return -1;
+//            }
         }
         Main.kod.append(
                 "#include \"nondetfvek.h\"    //generated\n" +
 //                "#include <time.h>\n" +
 
-                "\npthread_mutex_t piConcurrent_mutex;    //generated\n" +
+                "\nint locked = 0;    //generated\n" +
+                "pthread_mutex_t piConcurrent_mutex;    //generated\n" +
                         "pthread_cond_t piConcurrent_cond;    //generated\n" +
                         "int piConcurrent_flag;    //generated\n");
         //thread ID-kat tárolják
@@ -129,7 +143,7 @@ public class WriteCode {
         while(start < end){
             if(matcher.find()){
                 sor = start;
-                System.out.println("\nA sor " + sor);
+//                System.out.println("\nA sor " + sor);
                 return sor;
             }
             start++;
@@ -169,9 +183,12 @@ public class WriteCode {
                 }
             }
             Main.lastLines.put(k, Main.edges.get(k).startLine);
-            System.out.println("\nLast line of fn " + Main.edges.get(k).startLine);
+            System.out.println("\nLast line of " + Main.edges.get(k).thread + ". thread: " + Main.edges.get(k).startLine);
             //k = edges.size(); //ha a while rész lenne a for ciklus helyett
+
+            Main.edges.get(k).isLastLine = true;
         }
+        Main.edges.get(Main.edges.size() - 1).isLastLine = true;
         return lastOfMain;
     }
 
@@ -202,14 +219,18 @@ public class WriteCode {
             }
             //más, ha a main vége...
             if(Main.edges.get(idx/*M*/).thread == 0 && Main.lastLines.containsValue(i/* + 1*/)){
+                if(idx != Main.edges.size() - 1)Main.kod.append("        piConcurrent_flag = piConcurrent_t" + Main.edges.get(idx + 1).thread + ";    //generated\n");
                 Main.kod.append("    pthread_cond_destroy(&piConcurrent_cond);    //generated\n" +
                         "    pthread_mutex_destroy(&piConcurrent_mutex);    //generated\n");
             }
             //...és más, ha egyéb fv utolsó sora
             if(Main.edges.get(idx).thread != 0 && Main.lastLines.containsValue(i) && idx != Main.edges.size() - 1){
-                Main.kod.append("    piConcurrent_flag = piConcurrent_t" + Main.edges.get(idx + 1).thread + ";    //generated\n" +
-                        "    pthread_cond_broadcast(&piConcurrent_cond);    //generated\n" +
-                        "    pthread_mutex_unlock(&piConcurrent_mutex);    //generated\n");
+                Main.kod.append(
+                        "    if(piConcurrent_maga == piConcurrent_t" + Main.edges.get(idx).thread + "){    //generated\n" +
+                        "        piConcurrent_flag = piConcurrent_t" + Main.edges.get(idx + 1).thread + ";    //generated\n" +
+                        "        pthread_cond_broadcast(&piConcurrent_cond);    //generated\n" +
+                        "        pthread_mutex_unlock(&piConcurrent_mutex);    //generated\n" +
+                        "    }    //generated\n");
             }
         }
     }
@@ -240,27 +261,37 @@ public class WriteCode {
      * @param idx - i-edik sorhoz kapja majd meg az indexet
      */
     public static void SetTheChange(int idx){
-        for (Map.Entry mapElement: Main.lastLines.entrySet()) {
-            if((int)mapElement.getValue() == idx + 1 && (idx < mainFn.startLine || idx > mainFn.endLine)){
-                //Ha utolsó él, nem sima váltás következik
-                return;
-            }
-        }
+//        for (Map.Entry mapElement: Main.lastLines.entrySet()) {
+//            if((int)mapElement.getValue() == idx + 1 && (idx < mainFn.startLine || idx > mainFn.endLine)){
+//                //Ha utolsó él, nem sima váltás következik
+//                return;
+//            }
+//        }
         for (int i = 0; i < Main.szalelek.size(); i++){
-            if(Main.szalelek.get(i).startLine == (idx + 1) && Main.szalelek.get(i).threadChanges){
+            if(Main.szalelek.get(i).startLine == (idx + 1) && Main.szalelek.get(i).threadChanges && !Main.szalelek.get(i).isLastLine){
                 System.out.println("\nHely: " + Main.szalelek.get(i).startLine + ", T: " + Main.szalelek.get(i + 1).thread);
+                if(Main.szalelek.get(i).thread != 0){
+                    Main.kod.append(
+                                        "    if(piConcurrent_maga == piConcurrent_t" + Main.szalelek.get(i).thread + "){    //generated\n");
+                }
                 Main.kod.append(
-                        "    piConcurrent_flag = piConcurrent_t" + Main.szalelek.get(i + 1).thread +";    //generated\n" +
-                                "    pthread_cond_broadcast(&piConcurrent_cond);    //generated\n");
+                                        "        piConcurrent_flag = piConcurrent_t" + Main.szalelek.get(i + 1).thread +";    //generated\n" +
+                                        "        pthread_cond_broadcast(&piConcurrent_cond);    //generated\n");
                 if(Main.szalelek.get(i).thread == 0){
-                    Main.kod.append("    while (piConcurrent_flag != piConcurrent_t0) {    //generated\n");
+                    Main.kod.append(
+                                        "    while (piConcurrent_flag != piConcurrent_t0) {    //generated\n");
                 }
                 else{
-                    Main.kod.append("    while (piConcurrent_flag != piConcurrent_maga) {    //generated\n");
+                    Main.kod.append(
+                                        "        while (piConcurrent_flag != piConcurrent_maga || locked == 0) {    //generated\n");
                 }
                 Main.kod.append(
-                        "        pthread_cond_wait(&piConcurrent_cond, &piConcurrent_mutex);    //generated\n" +
-                                "    }    //generated\n");
+                                        "            pthread_cond_wait(&piConcurrent_cond, &piConcurrent_mutex);    //generated\n" +
+                                        "        }    //generated\n");
+                if(Main.szalelek.get(i).thread != 0){
+                    Main.kod.append(
+                                        "    }    //generated\n");
+                }
             }
         }
     }
@@ -272,43 +303,22 @@ public class WriteCode {
      */
     public static void SetTheStartOfFunctions(int i){
         for(int k = 0; k < Main.funok.size(); k++){
-            if(Main.funok.get(k).startLine == i && !Main.funok.get(k).name.equals("main")){
+            if(Main.funok.get(k).startCurly == i + 1 && !Main.funok.get(k).name.equals("main") && Main.funok.get(k).startedOnThread){
                 Main.kod.append("    pthread_mutex_lock(&piConcurrent_mutex);    //generated\n" +
                                 "    int piConcurrent_maga = pthread_self();    //generated\n" +
                                 "    while (piConcurrent_flag != piConcurrent_maga) {    //generated\n" +
                                 "        pthread_cond_wait(&piConcurrent_cond, &piConcurrent_mutex);    //generated\n" +
                                 "    }    //generated\n");
-            }
-            else if(Main.funok.get(k).startLine == i && Main.funok.get(k).name.equals("main")){
+            } else if (Main.funok.get(k).startCurly == i + 1 && !Main.funok.get(k).name.equals("main") && !Main.funok.get(k).startedOnThread) {
+                Main.kod.append("    int piConcurrent_maga = pthread_self();    //generated\n");
+            } else if(Main.funok.get(k).startCurly == i + 1 && Main.funok.get(k).name.equals("main")){
                 Main.kod.append("    pthread_cond_init(&piConcurrent_cond, 0);    //generated\n" +
                             "    pthread_mutex_init(&piConcurrent_mutex, 0);    //generated\n" +
                             "    pthread_mutex_lock(&piConcurrent_mutex);    //generated\n" +
+                            "    locked = 1;    //generated\n" +
                             "    piConcurrent_t0 = pthread_self();    //generated\n");
             }
         }
-//        Pattern pattern;
-//        Matcher matcher;
-//        //valami szóköz csillag valami nyitó zárójel - regex-re illeszkedő után (remélhetőleg fv) elején fv eleji beállítási dolgok
-//        pattern = Pattern.compile(".*\\*.*\\(.*\\).*\\{.*");
-//        matcher = pattern.matcher(Main.sorok.get(i));
-//        if(matcher.find() && !Main.sorok.get(i).contains("main")){
-//            Main.kod.append("    pthread_mutex_lock(&piConcurrent_mutex);    //generated\n" +
-//                    "    int piConcurrent_maga = pthread_self();    //generated\n" +
-//                    "    while (piConcurrent_flag != piConcurrent_maga) {    //generated\n" +
-//                    "        pthread_cond_wait(&piConcurrent_cond, &piConcurrent_mutex);    //generated\n" +
-//                    "    }    //generated\n");
-//        }
-//        else{
-//            //main eleji beállítások
-//            pattern = Pattern.compile("int main\\(.*");
-//            matcher = pattern.matcher(Main.sorok.get(i));
-//            if(matcher.find()){
-//                Main.kod.append("    pthread_cond_init(&piConcurrent_cond, 0);    //generated\n" +
-//                        "    pthread_mutex_init(&piConcurrent_mutex, 0);    //generated\n" +
-//                        "    pthread_mutex_lock(&piConcurrent_mutex);    //generated\n" +
-//                        "    piConcurrent_t0 = pthread_self();    //generated\n");
-//            }
-//        }
     }
 
     /**
@@ -352,11 +362,30 @@ public class WriteCode {
                     "#ifndef NONDETFVEK_H_INCLUDED\n" +
                     "#define NONDETFVEK_H_INCLUDED\n");
             myWriter.write(Main.headerbe.toString());
+            myWriter.write("\nvoid __VERIFIER_atomic_begin(void){return;}\n");
+            myWriter.write("\nvoid __VERIFIER_atomic_end(void){return;}\n");
             myWriter.write("#endif");
             myWriter.close();
         } catch (IOException e) {
             System.out.println("Hiba van a kiiratassal.");
             e.printStackTrace();
+        }
+    }
+
+    public static void HianyosNondetKezel(int i){
+        int nondetEleje = Main.sorok.get(i).indexOf("__VERIFIER_nondet_");
+        int nondetVege = Main.sorok.get(i).indexOf("(", nondetEleje);
+        String nondetFvType = Main.sorok.get(i).substring(nondetEleje + ("__VERIFIER_nondet_").length(), nondetVege);
+//                System.out.println(nondetFvType);
+//                System.out.println("\n\n__VERIFIER_nondet_\n\n");
+        boolean tartalmazza = false;
+        String header = Main.headerbe.toString();
+        if(header.contains(nondetFvType)) tartalmazza = true ;
+        if(!tartalmazza){
+//                    System.out.println("\nHiasan nem lett jelolve " + nondetFvType);
+            String nondetFv = "__VERIFIER_nondet_" + nondetFvType;
+            if(nondetFvType.startsWith("u")) nondetFvType = "unsigned " + nondetFvType.substring(1);
+            Main.headerbe.append("\n" + nondetFvType + " " + nondetFv + "(){ return 0;}\n");
         }
     }
 }

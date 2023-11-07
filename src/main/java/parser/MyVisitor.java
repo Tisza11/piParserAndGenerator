@@ -24,6 +24,7 @@ public class MyVisitor extends GBaseVisitor<Object>{
         tarolo.name = ctx.fnName().WORD().toString();
         tarolo.startLine = (int)ctx.braces().start.getLine();
         tarolo.endLine = (int)ctx.curlys().stop.getLine();
+        tarolo.startCurly = (int)ctx.curlys().start.getLine();
         funok.add(tarolo);
         return visitChildren(ctx);
     }

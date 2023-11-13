@@ -16,8 +16,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Main {
-    //C file neve
-//    @Parameter(names = "--codeFile", required = true, description = "Ide add meg a .i file-t!")
+    //C file elérési útja
+    @Parameter(names = "--codeFile", required = true, description = "Ide add meg a .i file-t!")
     public static String codeFile;
 
     //élek adatainak eltárolása beolvasás után ebben
@@ -30,7 +30,7 @@ public class Main {
     public static ArrayList<Fun> funok = new ArrayList<>();
 
     //witness file elérési útja
-//    @Parameter(names = "--gmlFile", required = true, description = "Ide add meg a witness file nevet!")
+    @Parameter(names = "--gmlFile", required = true, description = "Ide add meg a witness file nevet!")
     public static String gmlFile;
 
     //ez a részlet fog bekerülni a C kódba a main elé, hogy futtatható legyen (nondet fv megvalósítások)
@@ -59,33 +59,33 @@ public class Main {
 //    public static int CurrentThread = 0;
 
     //cél mappa elérési útja
-//    @Parameter(names = "--targetFolder", required = true, description = "Ide add meg a cel mappa eleresi utjat!")
+    @Parameter(names = "--targetFolder", required = true, description = "Ide add meg a cel mappa eleresi utjat!")
     public static String targetFolder;
 //    public static String targetFolder = "futasra";
-//    public static void main(final String[] args) throws ParserConfigurationException, IOException, SAXException {
-//        final Main mainApp = new Main();
-//        mainApp.run(args);
-//    }
-//
-//    public void run(String[] args) throws ParserConfigurationException, IOException, SAXException {
-//        try {
-//            JCommander.newBuilder().addObject(this).programName("graphmlparser").build().parse(args);
-//        } catch (final ParameterException ex) {
-//            System.out.println("Invalid parameters, details:");
-//            System.out.println(ex.getMessage());
-//            ex.usage();
-//            return;
-//        }
+    public static void main(final String[] args) throws ParserConfigurationException, IOException, SAXException {
+        final Main mainApp = new Main();
+        mainApp.run(args);
+    }
+
+    public void run(String[] args) throws ParserConfigurationException, IOException, SAXException {
+        try {
+            JCommander.newBuilder().addObject(this).programName("graphmlparser").build().parse(args);
+        } catch (final ParameterException ex) {
+            System.out.println("Invalid parameters, details:");
+            System.out.println(ex.getMessage());
+            ex.usage();
+            return;
+        }
 
 
         //sima futtataskor
-    public static void main(String[] args) throws ParserConfigurationException, IOException, SAXException {
-        sourceFolder = "C:\\egyetem masolat\\felev6\\Onlab\\c-probak\\";
-//        sourceFolder = "/mnt/c/egyetem masolat/felev6/Onlab/c-probak/";
-        gmlFile = "rwl_D.graphml"; //"witnessAzonos.graphml";
-        codeFile = "read_write_lock-2.i"; //"funok.i";
-        targetFolder = "C:\\egyetem masolat\\felev6\\Onlab\\futasra\\";
-//        targetFolder = "/mnt/c/egyetem masolat/felev6/Onlab/futasra/";
+//    public static void main(String[] args) throws ParserConfigurationException, IOException, SAXException {
+//        sourceFolder = "C:\\egyetem masolat\\felev6\\Onlab\\c-probak\\";
+////        sourceFolder = "/mnt/c/egyetem masolat/felev6/Onlab/c-probak/";
+//        gmlFile = "C:\\egyetem masolat\\felev6\\Onlab\\c-probak\\l01_D.graphml"; //"witnessAzonos.graphml";
+//        codeFile = "C:\\egyetem masolat\\felev6\\Onlab\\c-probak\\lazy01.i"; //"funok.i";
+//        targetFolder = "C:\\egyetem masolat\\felev6\\Onlab\\futasra\\";
+////        targetFolder = "/mnt/c/egyetem masolat/felev6/Onlab/futasra/";
         if(!ReadXML.Read_XML(gmlFile, codeFile)) return;
 //        System.out.println("Read xml done");
         InIt.Init();
@@ -112,7 +112,7 @@ public class Main {
      */
     public static void ReadCode(/*String codeFolder, */String codeFile){
         try {
-            File myFile = new File(sourceFolder + codeFile);
+            File myFile = new File(/*sourceFolder +*/ codeFile);
             Scanner myReader = new Scanner(myFile);
             while (myReader.hasNextLine()) {
                 String data = myReader.nextLine();
@@ -130,14 +130,14 @@ public class Main {
      */
     public static void ReadFuns() {
 //        System.out.println(sourceFolder + codeFile);
-        Parse.parse(sourceFolder + codeFile);
+        Parse.parse(/*sourceFolder +*/ codeFile);
         //fv-ek neve, kezdo es zaro sora
-        for (int i = 0; i < funok.size(); i++) {
-            System.out.println(funok.get(i).name);
-            System.out.println(funok.get(i).startLine);
-            System.out.println(funok.get(i).startCurly);
-            System.out.println(funok.get(i).endLine);
-        }
+//        for (int i = 0; i < funok.size(); i++) {
+//            System.out.println(funok.get(i).name);
+//            System.out.println(funok.get(i).startLine);
+//            System.out.println(funok.get(i).startCurly);
+//            System.out.println(funok.get(i).endLine);
+//        }
     }
 
     /**
@@ -172,12 +172,12 @@ public class Main {
     public static void CompileCprog() throws IOException {
         ClearAndSetFolder();
         //linuxra
-//        ProcessBuilder builder = new ProcessBuilder(
-//                "sh", "-c", "cd " + targetFolder + " && gcc main.c -o main && ./main");
+        ProcessBuilder builder = new ProcessBuilder(
+                "sh", "-c", "cd " + targetFolder + " && gcc main.c -o main && ./main");
         //windowsra
-        ProcessBuilder builder;
-        builder = new ProcessBuilder(
-                "cmd.exe", "/c", "cd " + targetFolder + " && gcc main.c -o main && main");
+//        ProcessBuilder builder;
+//        builder = new ProcessBuilder(
+//                "cmd.exe", "/c", "cd " + targetFolder + " && gcc main.c -o main && main");
         builder.redirectErrorStream(true);
         Process p = null;
         try {
@@ -196,7 +196,7 @@ public class Main {
                 throw new RuntimeException(e);
             }
             if (line == null) { break; }
-            System.out.println(line);
+//            System.out.println(line);
             acc = acc + line;
         }
         if(acc.contains("main") && (acc.contains("failed") || acc.contains("Aborted"))){

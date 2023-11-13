@@ -32,13 +32,20 @@ public class WriteCode {
         //sorok és hozzájuk tartozó részek összeállítása
         for(int i = eleje; i < Main.sorok.size(); i++){
 //            if(j == (i + 1) && j > 0)Main.kod.append("    pthread_mutex_unlock(&piConcurrent_mutex);    //generated\n");
-            //join előtt felszabadíztani a mutexet
             SetTheEndOfFunctions(i);
+            //join előtt felszabadíztani a mutexet
             if(Main.sorok.get(i).contains("pthread_join"))Main.kod.append(
                     "    locked = 0;    //generated\n" +
                     "    pthread_mutex_unlock(&piConcurrent_mutex);    //generated\n");
             Main.kod.append(Main.sorok.get(i));   /*<----------sor hozzáadás---------<<<<<*/
             Main.kod.append("\n");
+            //if, else, for, while utáni sorban lévő '{' karakter kezelése
+            boolean skipLine = false;
+            if(i < (Main.sorok.size() - 1) && Main.sorok.get(i + 1).matches("[\\{\\s]*") && (Main.sorok.get(i).contains("if") || Main.sorok.get(i).contains("else") || Main.sorok.get(i).contains("for") || Main.sorok.get(i).contains("while"))){
+                Main.kod.append(Main.sorok.get(i + 1) + "\n");
+//                System.out.println("\nCsak { van itt: " + (i + 1) + "\n");
+                skipLine = true;
+            }
             if(Main.sorok.get(i).contains("pthread_join"))Main.kod.append(
                     "    pthread_mutex_lock(&piConcurrent_mutex);    //generated\n" +
                     "    locked = 1;    //generated\n");
@@ -53,6 +60,7 @@ public class WriteCode {
                 System.out.println("infinite loop");
                 return -1;
             }
+            if (skipLine)i++;
         }
         CleareFolder();
         WriteOut();
@@ -73,9 +81,9 @@ public class WriteCode {
         for (int i = 0; i < Main.szalelek.size() - 1; i++) {
             if(Main.szalelek.get(i).thread != Main.szalelek.get(i + 1).thread){
                 Main.szalelek.get(i).threadChanges = true;
-                System.out.println("\nchange thread from " + Main.szalelek.get(i).thread + " to " + Main.szalelek.get(i + 1).thread + "\n");
-                System.out.println("Line " + Main.szalelek.get(i).startLine);
-                System.out.println(Main.szalelek.get(i).isLastLine);
+//                System.out.println("\nchange thread from " + Main.szalelek.get(i).thread + " to " + Main.szalelek.get(i + 1).thread + "\n");
+//                System.out.println("Line " + Main.szalelek.get(i).startLine);
+//                System.out.println(Main.szalelek.get(i).isLastLine);
             }
         }
     }
@@ -183,7 +191,7 @@ public class WriteCode {
                 }
             }
             Main.lastLines.put(k, Main.edges.get(k).startLine);
-            System.out.println("\nLast line of " + Main.edges.get(k).thread + ". thread: " + Main.edges.get(k).startLine);
+//            System.out.println("\nLast line of " + Main.edges.get(k).thread + ". thread: " + Main.edges.get(k).startLine);
             //k = edges.size(); //ha a while rész lenne a for ciklus helyett
 
             Main.edges.get(k).isLastLine = true;

@@ -33,7 +33,7 @@ public class ReadXML {
         if(!CheckNameInGraphML(gmlFile, keres))return false;
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
-        Document doc = builder.parse(Main.sourceFolder + gmlFile);
+        Document doc = builder.parse(/*Main.sourceFolder +*/ gmlFile);
         violation = CheckWitnessType(doc);
         if(!violation)return false;
         NodeList edges = doc.getElementsByTagName("edge");
@@ -58,17 +58,19 @@ public class ReadXML {
      */
     public static boolean CheckNameInGraphML(String gmlFile, String keres){
         boolean correct = false;
-        File myFile = new File(Main.sourceFolder + gmlFile);
+        File myFile = new File(/*Main.sourceFolder +*/ gmlFile);
         Scanner myReader = null;
         try {
             myReader = new Scanner(myFile);
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
+        //windows esetében "\\", linuxhoz "/" keresés kell!
+        String neve = keres.substring(keres.lastIndexOf("/") + 1);
         //vizsgálja, hogy jó-e a C file - witness file páros
         while (myReader.hasNextLine()) {
             String data = myReader.nextLine();
-            if(data.contains(keres/*.substring(idx + 1)*/)){
+            if(data.contains(neve/*.substring(idx + 1)*/)){
                 correct = true;
                 break;
             }

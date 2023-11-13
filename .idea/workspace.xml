@@ -9,12 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b36f0cb3-f89e-4a75-9225-34c5099abc14" name="Changes" comment="Mukodik a jar generalas Linuxra.">
+    <list default="true" id="b36f0cb3-f89e-4a75-9225-34c5099abc14" name="Changes" comment="Szalankent mashogy valtas kezelve.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/parser/MyVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/parser/MyVisitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/piConcurrent/Edge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/piConcurrent/Edge.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/piConcurrent/Fun.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/piConcurrent/Fun.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/piConcurrent/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/piConcurrent/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/piConcurrent/ReadXML.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/piConcurrent/ReadXML.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/piConcurrent/WriteCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/piConcurrent/WriteCode.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -83,17 +81,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "WebServerToolWindowFactoryState": "false",
-    "jdk.selected.JAVA_MODULE": "adopt-11",
-    "last_opened_file_path": "C:/egyetem masolat/felev5/temalab/Violation2Test",
-    "project.structure.last.edited": "Artifacts",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "editor.preferences.import"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;adopt-11&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/egyetem masolat/felev7/ReteLab2/MIT4/RescueFramework&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Problems&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.import&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\egyetem masolat\felev7\Szakdoga\piParserAndGenerator\lib" />
@@ -116,7 +114,7 @@
       <recent name="antlr" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.futtat">
+  <component name="RunManager" selected="Gradle.piParserAndGenerator [runShadow]">
     <configuration name="futtat" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="adopt-11" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -237,7 +235,11 @@
       <workItem from="1698017245843" duration="8597000" />
       <workItem from="1698103260171" duration="23334000" />
       <workItem from="1698662463191" duration="25882000" />
-      <workItem from="1698784977022" duration="39535000" />
+      <workItem from="1698784977022" duration="47304000" />
+      <workItem from="1699803434313" duration="46000" />
+      <workItem from="1699896513762" duration="1744000" />
+      <workItem from="1699906607265" duration="1472000" />
+      <workItem from="1699908122203" duration="984000" />
     </task>
     <task id="LOCAL-00001" summary="antlr classokat nem talalja">
       <created>1697481940814</created>
@@ -274,7 +276,14 @@
       <option name="project" value="LOCAL" />
       <updated>1698870787043</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Szalankent mashogy valtas kezelve.">
+      <created>1699329086626</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1699329086626</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -297,24 +306,25 @@
     <MESSAGE value="mukodik nehany sv-compos peldara is" />
     <MESSAGE value="mukodik nehany sv-compos peldara is, reszben mukodik a jar generalas" />
     <MESSAGE value="Mukodik a jar generalas Linuxra." />
-    <option name="LAST_COMMIT_MESSAGE" value="Mukodik a jar generalas Linuxra." />
+    <MESSAGE value="Szalankent mashogy valtas kezelve." />
+    <option name="LAST_COMMIT_MESSAGE" value="Szalankent mashogy valtas kezelve." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/piConcurrent/WriteCode.java</url>
-          <line>15</line>
-          <properties class="piConcurrent.WriteCode" method="Write_Code">
+          <url>file://$PROJECT_DIR$/src/main/java/piConcurrent/Main.java</url>
+          <line>81</line>
+          <properties class="piConcurrent.Main" method="main">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
-          <option name="timeStamp" value="4" />
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/piConcurrent/WriteCode.java</url>
-          <line>56</line>
-          <option name="timeStamp" value="5" />
+          <url>file://$PROJECT_DIR$/src/main/java/piConcurrent/Main.java</url>
+          <line>88</line>
+          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -9,11 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b36f0cb3-f89e-4a75-9225-34c5099abc14" name="Changes" comment="Szalankent mashogy valtas kezelve.">
+    <list default="true" id="b36f0cb3-f89e-4a75-9225-34c5099abc14" name="Changes" comment="jar méréshez alkalmas flagekkel">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/piConcurrent/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/piConcurrent/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/piConcurrent/ReadXML.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/piConcurrent/ReadXML.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/piConcurrent/WriteCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/piConcurrent/WriteCode.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -239,7 +237,9 @@
       <workItem from="1699803434313" duration="46000" />
       <workItem from="1699896513762" duration="1744000" />
       <workItem from="1699906607265" duration="1472000" />
-      <workItem from="1699908122203" duration="984000" />
+      <workItem from="1699908122203" duration="1675000" />
+      <workItem from="1700436386079" duration="659000" />
+      <workItem from="1700706918114" duration="5785000" />
     </task>
     <task id="LOCAL-00001" summary="antlr classokat nem talalja">
       <created>1697481940814</created>
@@ -283,7 +283,14 @@
       <option name="project" value="LOCAL" />
       <updated>1699329086626</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="jar méréshez alkalmas flagekkel">
+      <created>1699909170058</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1699909170058</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -307,7 +314,8 @@
     <MESSAGE value="mukodik nehany sv-compos peldara is, reszben mukodik a jar generalas" />
     <MESSAGE value="Mukodik a jar generalas Linuxra." />
     <MESSAGE value="Szalankent mashogy valtas kezelve." />
-    <option name="LAST_COMMIT_MESSAGE" value="Szalankent mashogy valtas kezelve." />
+    <MESSAGE value="jar méréshez alkalmas flagekkel" />
+    <option name="LAST_COMMIT_MESSAGE" value="jar méréshez alkalmas flagekkel" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

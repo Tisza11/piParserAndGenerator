@@ -86,7 +86,10 @@ public class Main {
 //        codeFile = "C:\\egyetem masolat\\felev6\\Onlab\\c-probak\\lazy01.i"; //"funok.i";
 //        targetFolder = "C:\\egyetem masolat\\felev6\\Onlab\\futasra\\";
 ////        targetFolder = "/mnt/c/egyetem masolat/felev6/Onlab/futasra/";
-        if(!ReadXML.Read_XML(gmlFile, codeFile)) return;
+        if(!ReadXML.Read_XML(gmlFile, codeFile)){
+            System.out.println("correctness");
+            return;
+        }
 //        System.out.println("Read xml done");
         InIt.Init();
 //        System.out.println("Init done");
@@ -173,7 +176,7 @@ public class Main {
         ClearAndSetFolder();
         //linuxra
         ProcessBuilder builder = new ProcessBuilder(
-                "sh", "-c", "cd " + targetFolder + " && gcc main.c -o main && ./main");
+                "sh", "-c", "cd " + targetFolder + " && gcc -pthread main.c -o main && ./main");
         //windowsra
 //        ProcessBuilder builder;
 //        builder = new ProcessBuilder(
@@ -196,7 +199,7 @@ public class Main {
                 throw new RuntimeException(e);
             }
             if (line == null) { break; }
-//            System.out.println(line);
+            System.out.println(line);
             acc = acc + line;
         }
         if(acc.contains("main") && (acc.contains("failed") || acc.contains("Aborted"))){

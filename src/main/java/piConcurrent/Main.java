@@ -57,11 +57,12 @@ public class Main {
 
 //    //a jelenlegi szálat tárolja    //jelenleg nincs használva
 //    public static int CurrentThread = 0;
-
-    //cél mappa elérési útja
     @Parameter(names = "--targetFolder", required = true, description = "Ide add meg a cel mappa eleresi utjat!")
     public static String targetFolder;
 //    public static String targetFolder = "futasra";
+
+    //létrehozott szálak azonosítói
+
     public static void main(final String[] args) throws ParserConfigurationException, IOException, SAXException {
         final Main mainApp = new Main();
         mainApp.run(args);
@@ -88,6 +89,7 @@ public class Main {
 ////        targetFolder = "/mnt/c/egyetem masolat/felev6/Onlab/futasra/";
         if(!ReadXML.Read_XML(gmlFile, codeFile)){
             System.out.println("correctness");
+            System.out.println("\nhiba");
             return;
         }
 //        System.out.println("Read xml done");
@@ -176,7 +178,7 @@ public class Main {
         ClearAndSetFolder();
         //linuxra
         ProcessBuilder builder = new ProcessBuilder(
-                "sh", "-c", "cd " + targetFolder + " && gcc -pthread main.c -o main && ./main");
+                "sh", "-c", "cd " + targetFolder + " && gcc -pthread main.c -o main &&  timeout 30s ./main");
         //windowsra
 //        ProcessBuilder builder;
 //        builder = new ProcessBuilder(
@@ -190,7 +192,7 @@ public class Main {
             throw new RuntimeException(e);
         }
         BufferedReader r = new BufferedReader(new InputStreamReader(p.getInputStream()));
-        String acc = "\noutput: ";
+        String acc = "\noutput: \n";
         String line;
         while (true) {
             try {
@@ -204,8 +206,20 @@ public class Main {
         }
         if(acc.contains("main") && (acc.contains("failed") || acc.contains("Aborted"))){
             System.out.println("failed, ok");
+        }else if(acc.contains("Aborted (core dumped)")){
+            System.out.println("failed, not ok");
+        }else if(acc.contains("sikeres_pi")){
+            System.out.println("sikeres_pi");
         }else {
             System.out.println("not failed, not ok");
+        }
+        try {
+            FileWriter myWriter = new FileWriter(targetFolder + "/out.h");
+            myWriter.write(acc);
+            myWriter.close();
+        } catch (IOException e) {
+            System.out.println("Hiba van a kiiratassal.");
+            e.printStackTrace();
         }
     }
 
@@ -221,7 +235,7 @@ public class Main {
         if(files.length > 2){
             final File[] fileok = dir.listFiles();
             for (File f: fileok){
-                if((!f.getName().equals("main.c")) && (!f.getName().equals("nondetfvek.h")));
+                if((!f.getName().equals("main.c")) && (!f.getName().equals("nondetfvek.h")) && (!f.getName().equals("out.txt")));
                     f.delete();
             }
         }

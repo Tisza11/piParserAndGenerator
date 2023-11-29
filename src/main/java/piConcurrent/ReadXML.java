@@ -66,7 +66,7 @@ public class ReadXML {
             throw new RuntimeException(e);
         }
         //windows esetében "\\", linuxhoz "/" keresés kell!
-        String neve = keres.substring(keres.lastIndexOf("/") + 1);
+        String neve = keres.substring(keres.lastIndexOf("/") + 1, keres.lastIndexOf("."));
         //vizsgálja, hogy jó-e a C file - witness file páros
         while (myReader.hasNextLine()) {
             String data = myReader.nextLine();
@@ -95,11 +95,11 @@ public class ReadXML {
             if (data.getNodeType() == Node.ELEMENT_NODE){
                 Element d = (Element) data;
                 if (d.getAttribute("key").equals("witness-type") && d.getTextContent().contains("correctness")){
-                    //System.out.println("correctness");
+//                    System.out.println("correctness");
                     violation = false;
                 }
                 if (d.getAttribute("key").equals("witness-type") && d.getTextContent().contains("violation")){
-                    //System.out.println("violation");
+//                    System.out.println("violation");
                     violation = true;
                 }
             }

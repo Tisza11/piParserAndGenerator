@@ -60,6 +60,11 @@ public class WriteCode {
                 System.out.println("infinite loop");
                 return -1;
             }
+            //TESZT JELLEGGEL
+            if(i+1 + 2 == mainFn.endLine){
+                Main.kod.append("\n#include <stdio.h>\nprintf(\"sikeres_pi\");\n");
+            }
+
             if (skipLine)i++;
         }
         CleareFolder();
@@ -277,7 +282,7 @@ public class WriteCode {
 //        }
         for (int i = 0; i < Main.szalelek.size(); i++){
             if(Main.szalelek.get(i).startLine == (idx + 1) && Main.szalelek.get(i).threadChanges && !Main.szalelek.get(i).isLastLine){
-                System.out.println("\nHely: " + Main.szalelek.get(i).startLine + ", T: " + Main.szalelek.get(i + 1).thread);
+//                System.out.println("\nHely: " + Main.szalelek.get(i).startLine + ", T: " + Main.szalelek.get(i + 1).thread);
                 if(Main.szalelek.get(i).thread != 0){
                     Main.kod.append(
                                         "    if(piConcurrent_maga == piConcurrent_t" + Main.szalelek.get(i).thread + "){    //generated\n");

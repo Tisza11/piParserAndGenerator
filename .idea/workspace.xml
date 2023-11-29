@@ -9,9 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b36f0cb3-f89e-4a75-9225-34c5099abc14" name="Changes" comment="jar méréshez alkalmas flagekkel">
+    <list default="true" id="b36f0cb3-f89e-4a75-9225-34c5099abc14" name="Changes" comment="meres1">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/piConcurrent/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/piConcurrent/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/piConcurrent/ReadXML.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/piConcurrent/ReadXML.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/piConcurrent/WriteCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/piConcurrent/WriteCode.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -239,7 +241,7 @@
       <workItem from="1699906607265" duration="1472000" />
       <workItem from="1699908122203" duration="1675000" />
       <workItem from="1700436386079" duration="659000" />
-      <workItem from="1700706918114" duration="5785000" />
+      <workItem from="1700706918114" duration="22339000" />
     </task>
     <task id="LOCAL-00001" summary="antlr classokat nem talalja">
       <created>1697481940814</created>
@@ -290,7 +292,14 @@
       <option name="project" value="LOCAL" />
       <updated>1699909170058</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="meres1">
+      <created>1701189045607</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1701189045608</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -315,27 +324,10 @@
     <MESSAGE value="Mukodik a jar generalas Linuxra." />
     <MESSAGE value="Szalankent mashogy valtas kezelve." />
     <MESSAGE value="jar méréshez alkalmas flagekkel" />
-    <option name="LAST_COMMIT_MESSAGE" value="jar méréshez alkalmas flagekkel" />
+    <MESSAGE value="meres1" />
+    <option name="LAST_COMMIT_MESSAGE" value="meres1" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/piConcurrent/Main.java</url>
-          <line>81</line>
-          <properties class="piConcurrent.Main" method="main">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/piConcurrent/Main.java</url>
-          <line>88</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="GradleRunConfiguration">
         <watch expression="Main.funok" />

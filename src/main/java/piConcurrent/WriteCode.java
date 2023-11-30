@@ -11,6 +11,7 @@ public class WriteCode {
     /**
      * C és header fileok megírása
      * Ez alatt találhatóak a benne felhasznált fv-ek, amik azért lettek kirendezve, hogy átláthatóbb legyen az WriteCode()
+     * Visszatérés a hasznos rész elejére mutatósor indexel
      */
     static Fun mainFn;
     public static int Write_Code(){
@@ -69,7 +70,7 @@ public class WriteCode {
         }
         CleareFolder();
         WriteOut();
-        return 0;
+        return eleje;
     }
 
     /**

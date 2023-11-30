@@ -9,10 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b36f0cb3-f89e-4a75-9225-34c5099abc14" name="Changes" comment="meres1">
+    <list default="true" id="b36f0cb3-f89e-4a75-9225-34c5099abc14" name="Changes" comment="meres2-fals negativ kiszurese is">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/piConcurrent/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/piConcurrent/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/piConcurrent/ReadXML.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/piConcurrent/ReadXML.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/piConcurrent/WriteCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/piConcurrent/WriteCode.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -241,7 +240,7 @@
       <workItem from="1699906607265" duration="1472000" />
       <workItem from="1699908122203" duration="1675000" />
       <workItem from="1700436386079" duration="659000" />
-      <workItem from="1700706918114" duration="22339000" />
+      <workItem from="1700706918114" duration="29754000" />
     </task>
     <task id="LOCAL-00001" summary="antlr classokat nem talalja">
       <created>1697481940814</created>
@@ -299,7 +298,14 @@
       <option name="project" value="LOCAL" />
       <updated>1701189045608</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="meres2-fals negativ kiszurese is">
+      <created>1701298826792</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1701298826792</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -325,7 +331,8 @@
     <MESSAGE value="Szalankent mashogy valtas kezelve." />
     <MESSAGE value="jar méréshez alkalmas flagekkel" />
     <MESSAGE value="meres1" />
-    <option name="LAST_COMMIT_MESSAGE" value="meres1" />
+    <MESSAGE value="meres2-fals negativ kiszurese is" />
+    <option name="LAST_COMMIT_MESSAGE" value="meres2-fals negativ kiszurese is" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

@@ -101,8 +101,12 @@ public class Main {
 //        System.out.println("Read funs done");
         Checker();
 //        System.out.println("Checker done");
-        if(WriteCode.Write_Code() == -1){
+        int eleje = WriteCode.Write_Code();
+        if(eleje == -1){
             System.out.println("vegtelen ciklus");
+            return;
+        }
+        if(!CheckAtomic(eleje)){
             return;
         }
 //        System.out.println("Write code done");
@@ -170,6 +174,41 @@ public class Main {
         }
     }
 
+
+    public static boolean CheckAtomic(int eleje){
+        ArrayList<String> ujSorok = new ArrayList<>();
+        boolean inAtomic = false;
+
+        try {
+            File myFile = new File(targetFolder + "/main.c");
+            Scanner myReader = new Scanner(myFile);
+            while (myReader.hasNextLine()) {
+                String data = myReader.nextLine();
+                ujSorok.add(data);
+            }
+            myReader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("Hiba van a beolvasassal.");
+            e.printStackTrace();
+        }
+
+        String adottSor = "";
+        for (int i = eleje; i < ujSorok.size(); i++) {
+            adottSor = ujSorok.get(i);
+            if(adottSor.contains("__VERIFIER_atomic_end();")){
+                inAtomic = false;
+            }
+            if(adottSor.contains("__VERIFIER_atomic_begin();")){
+                inAtomic = true;
+            }
+            if(adottSor.contains("//generated") && inAtomic){
+                System.out.println("atomic hiba");
+                return false;
+            }
+        }
+        return true;
+
+    }
 
     /**
      * fordítás és futtatás
